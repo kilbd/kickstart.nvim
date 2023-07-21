@@ -76,6 +76,9 @@ require('lazy').setup({
   -- is near the end of this config script.
   'HiPhish/rainbow-delimiters.nvim',
 
+  -- A paid service that might come and go from this config
+  'github/copilot.vim',
+
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -546,12 +549,12 @@ vim.g.rainbow_delimiters = {
 
 -- Now configure blankline for rainbow indents (and other fun formatting)!
 vim.opt.termguicolors = true
-vim.cmd [[highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
-vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine]]
-vim.cmd [[highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine]]
-vim.cmd [[highlight IndentBlanklineIndent4 guifg=#56B6C2 gui=nocombine]]
-vim.cmd [[highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine]]
-vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent1 guifg=#8B1D26 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent2 guifg=#764B23 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent3 guifg=#966B1C gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent4 guifg=#4B6E31 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent5 guifg=#115B99 gui=nocombine]]
+vim.cmd [[highlight IndentBlanklineIndent6 guifg=#712288 gui=nocombine]]
 
 vim.opt.list = true
 -- vim.opt.listchars:append "space:⋅"
@@ -568,6 +571,10 @@ require("indent_blankline").setup {
     "IndentBlanklineIndent6",
   },
 }
+
+-- This setting is required so Copilot doesn't complain about <Tab> maps
+-- and actually works
+vim.g.copilot_assume_mapped = true
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
