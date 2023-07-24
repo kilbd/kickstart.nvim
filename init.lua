@@ -260,6 +260,9 @@ vim.o.termguicolors = true
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- Windows paste overrides visual block mode.
+-- Don't want to use Ctrl-Q because Zellij uses it for closing session
+vim.keymap.set('n', '<Leader>vb', '<C-v>', { desc = '[V]isual [B]lock mode', silent = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -442,7 +445,7 @@ local servers = {
   -- gopls = {},
   pyright = {},
   rust_analyzer = {},
-  tsserver = {},
+  tsserver = { settings = { documentFormatting = true } },
 
   lua_ls = {
     Lua = {
@@ -523,6 +526,15 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- One Dark configuration
+require('onedark').setup {
+  style = 'warmer',
+  highlights = {
+    ['@keyword.modifier'] = { fg = '$purple', fmt = 'italic' },
+  }
+}
+require('onedark').load()
 
 -- Configure Rainbow Delimiters
 local rainbow_delimiters = require 'rainbow-delimiters'
